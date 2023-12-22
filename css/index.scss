@@ -1,0 +1,75 @@
+@import './variaveis';
+
+@mixin flexCenter($direction){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+}
+
+body{
+    @include flexCenter(row);
+    background-color: $corBody;
+    height: 100vh;
+    font-family: 'Roboto';
+    box-sizing: border-box;
+
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        max-width: 100%;
+        align-items: center;
+        padding: 40px;
+        background-color: $corContainer;
+        border-radius: 12px;
+        color: #FFF;
+    }
+
+    .container .side-a img{
+        width: 300px;
+        height: 300px;
+    }
+    
+    .container .side-b{
+        @include flexCenter(column);
+        gap: 46px;
+    }
+
+        .timer{
+            background-color: #363636;
+            padding: 24px;
+            font-weight: 700;
+            font-size: 24px;
+            border-radius: 12px;
+            letter-spacing: 2px;
+        }
+
+        button{
+            border: 2px solid #fff;
+            background: none;
+            color: #FFF;
+            padding: 8px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all ease-in .3s;
+            flex-wrap: wrap;
+
+            &:hover{
+                background-color: white;
+                color: black;
+            }
+        }
+
+            @media (max-width: 600px) {
+                .container {
+                    @include flexCenter(column);
+                    width: 200px;
+                }
+
+                body .container .side-a img{
+                    width: 200px;
+                    height: 200px;
+                }
+            }
+}
